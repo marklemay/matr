@@ -35,4 +35,4 @@ object Submatrix:
     object Requirements:
         type WindowWithinShape[RowIdxTL <: Int, ColIdxTL <: Int, RowIdxBR <: Int, ColIdxBR <: Int, R <: Int, C <: Int] =
             (RowIdxTL >= 0 && RowIdxTL + 1 < R && ColIdxTL >= 0 && ColIdxTL + 1 < C && RowIdxBR >= RowIdxTL &&
-                RowIdxBR < R && ColIdxBR >= ColIdxTL && ColIdxBR < C) =:= true
+                RowIdxBR < R && ColIdxBR >= ColIdxTL && ColIdxBR < C)

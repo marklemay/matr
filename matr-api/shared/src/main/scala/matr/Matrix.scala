@@ -185,16 +185,16 @@ object Matrix:
 
         /** Validates at compile-time that the specified Matrix dimensions are non-negative.
           */
-        type NonNegativeDimensions[R <: Int, C <: Int] = (R > 0 && C > 0) =:= true
+        type NonNegativeDimensions[R <: Int, C <: Int] = (R > 0 && C > 0)
 
         /** Validates at compile-time that the specified Matrix dimensions form a squared Matrix.
           */
-        type IsSquare[R <: Int, C <: Int] = R == C =:= true
+        type IsSquare[R <: Int, C <: Int] = R == C
 
         /** Validates at compile-time that the specified row and column index are within the given Matrix dimensions.
           */
         type PositionWithinShape[RowIdx <: Int, ColIdx <: Int, R <: Int, C <: Int] =
-            (RowIdx >= 0 && RowIdx < R && ColIdx >= 0 && ColIdx < C) =:= true
+            (RowIdx >= 0 && RowIdx < R && ColIdx >= 0 && ColIdx < C)
 
         /** Validates that the specified row and column index are within the given Matrix dimensions.
           */
