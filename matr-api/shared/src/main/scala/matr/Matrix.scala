@@ -30,7 +30,8 @@ import scala.compiletime.ops.int.>=
   * @tparam T
   *   element type
   */
-trait Matrix[R <: Int, C <: Int, T](using ValueOf[R], ValueOf[C], Matrix.Requirements.NonNegativeDimensions[R, C]):
+trait Matrix[R <: Int, C <: Int, T](using ValueOf[R], ValueOf[C],
+                                    C > 0, R > 0):
 
     lhs =>
 
@@ -185,7 +186,7 @@ object Matrix:
 
         /** Validates at compile-time that the specified Matrix dimensions are non-negative.
           */
-        type NonNegativeDimensions[R <: Int, C <: Int] = (R > 0 && C > 0)
+        type NonNegativeDimensions[R <: Int, C <: Int] = R > 0 && C > 0
 
         /** Validates at compile-time that the specified Matrix dimensions form a squared Matrix.
           */

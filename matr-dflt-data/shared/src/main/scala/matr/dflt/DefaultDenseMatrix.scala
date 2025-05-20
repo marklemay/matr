@@ -7,7 +7,7 @@ case class DefaultDenseMatrix[R <: Int, C <: Int, T](private val elements: Array
     using
     ValueOf[R],
     ValueOf[C],
-    Matrix.Requirements.NonNegativeDimensions[R, C]
+    C > 0, R > 0
 ) extends Matrix[R, C, T]:
     lhs =>
 

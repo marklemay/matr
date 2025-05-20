@@ -14,7 +14,7 @@ trait DefaultMatrixFactory:
         ValueOf[C],
         Numeric[T],
         ClassTag[T],
-        Matrix.Requirements.NonNegativeDimensions[R, C]
+        R > 0, C > 0
     ): MatrixFactory[R, C, T] =
         MatrixFactoryCache[R, C, T](
           new MatrixFactory[R, C, T]:

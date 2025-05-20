@@ -9,7 +9,7 @@ trait DefaultTranspose:
         using
         ValueOf[R],
         ValueOf[C],
-        Matrix.Requirements.NonNegativeDimensions[C, R]
+        C > 0, R > 0
     ): Transpose[R, C, T] =
         new Transpose:
             def transpose(m: Matrix[R, C, T]): Matrix[C, R, T] = DefaultTranspose.TransposeView(m)
@@ -20,7 +20,7 @@ object DefaultTranspose extends DefaultTranspose:
         using
         ValueOf[OrigR],
         ValueOf[OrigC],
-        Matrix.Requirements.NonNegativeDimensions[OrigC, OrigR]
+        OrigC > 0, OrigR > 0
     ) extends Matrix[OrigC, OrigR, T]:
 
         override def apply(rowIdx: Int, colIdx: Int): T =

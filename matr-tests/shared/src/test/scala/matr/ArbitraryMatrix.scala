@@ -4,8 +4,7 @@ import org.scalacheck.Arbitrary
 
 object ArbitraryMatrix:
 
-    def apply[R <: Int, C <: Int, T](using
-        Matrix.Requirements.NonNegativeDimensions[R, C]
+    def apply[R <: Int, C <: Int, T](using C > 0, R > 0
     )(using
         vr: ValueOf[R],
         vc: ValueOf[C]

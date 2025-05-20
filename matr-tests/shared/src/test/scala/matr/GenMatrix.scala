@@ -7,7 +7,7 @@ import org.scalacheck.Gen.Choose
 object GenMatrix:
 
     def apply[R <: Int, C <: Int, T](using
-        Matrix.Requirements.NonNegativeDimensions[R, C]
+    R > 0, C > 0
     )(using
         vr: ValueOf[R],
         vc: ValueOf[C]
@@ -24,8 +24,7 @@ object GenMatrix:
 
 object GenNumericMatrix:
 
-    def apply[R <: Int, C <: Int, T](min: T, max: T)(using
-        Matrix.Requirements.NonNegativeDimensions[R, C]
+    def apply[R <: Int, C <: Int, T](min: T, max: T)(using C > 0, R > 0
     )(using
         vr: ValueOf[R],
         vc: ValueOf[C]

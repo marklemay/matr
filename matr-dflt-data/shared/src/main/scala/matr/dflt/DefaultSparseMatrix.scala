@@ -7,6 +7,7 @@ case class DefaultSparseMatrix[R <: Int, C <: Int, T](private val elements: Map[
     ValueOf[R],
     ValueOf[C],
     Numeric[T],
+    R>
     Matrix.Requirements.NonNegativeDimensions[R, C]
 ) extends Matrix[R, C, T]:
     lhs =>

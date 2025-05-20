@@ -32,8 +32,7 @@ class DefaultInverseSpec extends MatrFlatSpec:
 
     it should "return correct inverse for 3x3 Matrix" in testInverse[3]
 
-    private def testInverse[N <: Int](using
-        Matrix.Requirements.NonNegativeDimensions[N, N]
+    private def testInverse[N <: Int](using N > 0
     )(using MatrixFactory[N, N, Rational])(using ValueOf[N])(using Matrix.Requirements.IsSquare[N, N]) =
 
         val id = MatrixFactory[N, N, Rational].identity

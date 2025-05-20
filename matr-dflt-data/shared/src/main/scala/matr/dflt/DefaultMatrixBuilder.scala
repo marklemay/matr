@@ -11,7 +11,7 @@ case class DefaultMatrixBuilder[R <: Int, C <: Int, T]()(
     ValueOf[R],
     ValueOf[C],
     Numeric[T],
-    Matrix.Requirements.NonNegativeDimensions[R, C]
+    R > 0, C > 0
 ) extends Matrix.Builder[R, C, T]:
 
     private val num: Numeric[T] = summon[Numeric[T]]

@@ -25,9 +25,9 @@ import scala.compiletime.ops.int.>=
   */
 trait Submatrix[RowIdxTL <: Int, ColIdxTL <: Int, RowIdxBR <: Int, ColIdxBR <: Int, R <: Int, C <: Int, T](
     using
-    Submatrix.Requirements.WindowWithinShape[RowIdxTL, ColIdxTL, RowIdxBR, ColIdxBR, R, C],
-    Matrix.Requirements.NonNegativeDimensions[RowIdxBR - RowIdxTL + 1, ColIdxBR - ColIdxTL + 1]
-):
+    Submatrix.Requirements.WindowWithinShape[RowIdxTL, ColIdxTL, RowIdxBR, ColIdxBR, R, C],                                           
+    RowIdxBR - RowIdxTL + 1 > 0, ColIdxBR - ColIdxTL + 1 > 0
+    ):
     def submatrix(m: Matrix[R, C, T]): Matrix[RowIdxBR - RowIdxTL + 1, ColIdxBR - ColIdxTL + 1, T]
 
 object Submatrix:

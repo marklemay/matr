@@ -13,10 +13,8 @@ trait DefaultSubmatrix:
         ValueOf[RowIdxTL],
         ValueOf[ColIdxTL],
         Submatrix.Requirements.WindowWithinShape[RowIdxTL, ColIdxTL, RowIdxBR, ColIdxBR, R, C],
-        Matrix.Requirements.NonNegativeDimensions[
-          RowIdxBR - RowIdxTL + 1,
-          ColIdxBR - ColIdxTL + 1
-        ]
+          RowIdxBR - RowIdxTL + 1 > 0,
+          ColIdxBR - ColIdxTL + 1 > 0
     ): Submatrix[RowIdxTL, ColIdxTL, RowIdxBR, ColIdxBR, R, C, T] =
         new Submatrix:
             def submatrix(m: Matrix[R, C, T]): Matrix[RowIdxBR - RowIdxTL + 1, ColIdxBR - ColIdxTL + 1, T] =
@@ -37,10 +35,8 @@ object DefaultSubmatrix extends DefaultSubmatrix:
         ValueOf[ColIdxBR - ColIdxTL + 1],
         ValueOf[RowIdxTL],
         ValueOf[ColIdxTL],
-        Matrix.Requirements.NonNegativeDimensions[
-          RowIdxBR - RowIdxTL + 1,
-          ColIdxBR - ColIdxTL + 1
-        ]
+          RowIdxBR - RowIdxTL + 1 > 0,
+          ColIdxBR - ColIdxTL + 1 > 0
     ) extends Matrix[RowIdxBR - RowIdxTL + 1, ColIdxBR - ColIdxTL + 1, T]:
         override def apply(rowIdx: Int, colIdx: Int): T =
             Matrix.Requirements.positionWithinShape(rowIdx, colIdx, rowDim, colDim)
